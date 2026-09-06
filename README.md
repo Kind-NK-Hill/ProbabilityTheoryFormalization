@@ -14,6 +14,7 @@ author of the linked preprint. **Stack:** Python · Lean 4 · SQLite · automate
 
 [Paper](https://arxiv.org/abs/2607.27298) ·
 [Run the complete workflow](docs/workflow_demo.md) ·
+[Review-history evaluation](https://github.com/Kind-NK-Hill/review-history-evaluation) ·
 [Two representative cases](#two-representative-cases) ·
 [Merged collaboration](https://github.com/wkshum/ProbabilityTheory/pull/8) ·
 [Contact](mailto:kdsdengshuo2823@gmail.com)
@@ -55,6 +56,12 @@ Review-history research has reconstructed the historical records and completed a
 first round of descriptive repair-trajectory analysis. Recorded judgments are not
 independently established mathematical truth, and no causal review benefit or
 completed accuracy benchmark is claimed. [Progress and limits](docs/project_notes.md#paper-and-ongoing-evaluation)
+
+The [evaluation repository](https://github.com/Kind-NK-Hill/review-history-evaluation)
+contains the selected historical inputs, analysis scripts, and saved statistical
+results. Its report status is listed there. It is linked here as the optional
+[`evaluations/review-history`](evaluations/review-history) Git submodule; running
+the formalization workflow does not require initializing it.
 
 ## Two representative cases
 

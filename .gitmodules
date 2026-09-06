@@ -1,0 +1,3 @@
+[submodule "review-history-evaluation"]
+	path = evaluations/review-history
+	url = https://github.com/Kind-NK-Hill/review-history-evaluation.git
