@@ -9,7 +9,7 @@ import subprocess
 import tempfile
 import unittest
 
-from tools.check_public_release import check, machine_path_findings
+from tools.check_public_release import check, check_public_submodules, machine_path_findings, PUBLIC_SUBMODULES
 from tools.export_public_release import export
 from tools.public_release_policy import find_forbidden_tracked_files
 
@@ -166,6 +166,38 @@ class PublicReleaseTests(unittest.TestCase):
         errors = check(self.output, self.paths())
         self.assertIn("private path: notes/private.md", errors)
         self.assertIn("public corpus mapping is missing", errors)
+
+    def install_companion_fixture(self):
+        path = "evaluations/review-history"
+        policy = PUBLIC_SUBMODULES[path]
+        commit = self.git("rev-parse", "HEAD").stdout.decode().strip()
+        self.write(".gitmodules", f'[submodule "{policy["name"]}"]\n\tpath = {path}\n\turl = {policy["url"]}\n')
+        self.git("add", ".gitmodules")
+        self.git("update-index", "--add", "--cacheinfo", f"160000,{commit},{path}")
+        return path, {path: {"commit": commit, "url": policy["url"]}}
+
+    def test_public_companion_is_verified_without_checkout(self):
+        path, declared = self.install_companion_fixture()
+        self.assertFalse((self.root / path).exists())
+        self.assertEqual(check_public_submodules(self.root, declared), ({path}, []))
+
+    def test_public_companion_rejects_pin_drift_and_changed_remote(self):
+        path, declared = self.install_companion_fixture()
+        self.git("update-index", "--cacheinfo", f"160000,{'1' * 40},{path}")
+        self.assertIn(f"public submodule Git link mismatch: {path}", check_public_submodules(self.root, declared)[1])
+        self.git("update-index", "--cacheinfo", f"160000,{declared[path]['commit']},{path}")
+        self.write(".gitmodules", '[submodule "review-history-evaluation"]\n\tpath = evaluations/review-history\n\turl = https://example.invalid/private.git\n')
+        declared[path]["url"] = "https://example.invalid/private.git"
+        errors = check_public_submodules(self.root, declared)[1]
+        self.assertIn(f"public submodule URL mismatch: {path}", errors)
+        self.assertIn("public .gitmodules configuration differs from approved companions", errors)
+
+    def test_companion_declaration_does_not_allow_other_directories(self):
+        _, declared = self.install_companion_fixture()
+        declared["evaluations/private-history"] = {"commit": "1" * 40, "url": "https://example.invalid/private.git"}
+        allowed, errors = check_public_submodules(self.root, declared)
+        self.assertNotIn("evaluations/private-history", allowed)
+        self.assertIn("unapproved public submodule: evaluations/private-history", errors)
 
 
 if __name__ == "__main__":
