@@ -98,6 +98,12 @@
       "transformation": "append_public_evidence_exclusions"
     },
     {
+      "path": ".gitmodules",
+      "sha256": "4f0cefc1925040b7fbee594084fd63e101e0abe69006cd11a6340201daf730df",
+      "source_sha256": null,
+      "transformation": "post_export_public_companion_update"
+    },
+    {
       "path": ".ignore",
       "sha256": "141e0e40affa3d2be38647ac6aa596525353c99b5dda8d4ee6f301aaed921309",
       "source_sha256": "141e0e40affa3d2be38647ac6aa596525353c99b5dda8d4ee6f301aaed921309",
@@ -3663,15 +3669,15 @@
     },
     {
       "path": "README.md",
-      "sha256": "f719f5089e44e3b0e0be45f9e2295ba5ac3c5f0af8b2e0d7f3667732bb787801",
+      "sha256": "bc069cec42bf8daf121948abce294cc9560d9eddb2d55c77573b0321c8f59a9c",
       "source_sha256": "f719f5089e44e3b0e0be45f9e2295ba5ac3c5f0af8b2e0d7f3667732bb787801",
-      "transformation": "copy"
+      "transformation": "post_export_public_companion_update"
     },
     {
       "path": "README.zh-CN.md",
-      "sha256": "143cc4775e5a80992a4d5ee1d437e1d54e5477749e31e3660f3faa0928d1991d",
+      "sha256": "813fb8d44a87c6d20b4d9937384a12c721b10e66798a17e4ab0d50908677398f",
       "source_sha256": "143cc4775e5a80992a4d5ee1d437e1d54e5477749e31e3660f3faa0928d1991d",
-      "transformation": "copy"
+      "transformation": "post_export_public_companion_update"
     },
     {
       "path": "SECURITY.md",
@@ -4995,9 +5001,9 @@
     },
     {
       "path": "tests/test_public_release.py",
-      "sha256": "9f67ef75127a870d3b42f3894c198f2bc05de4da3482d92d82082a320aa4cd4b",
+      "sha256": "a218529224f577e240be50027a6343fdedc2d34cfc9265e5eb27f1a98c4a24a0",
       "source_sha256": "9f67ef75127a870d3b42f3894c198f2bc05de4da3482d92d82082a320aa4cd4b",
-      "transformation": "copy"
+      "transformation": "post_export_public_companion_update"
     },
     {
       "path": "tests/test_review_basis_diagnostics.py",
@@ -5199,9 +5205,9 @@
     },
     {
       "path": "tools/check_public_release.py",
-      "sha256": "169647ad703ce543d84faf17f1c5638e584d00669ac8bb055cd984d765ba7608",
+      "sha256": "6642ac2440dd627dad3e09ef199135491ea919ede07cae7d38a656e32881b499",
       "source_sha256": "169647ad703ce543d84faf17f1c5638e584d00669ac8bb055cd984d765ba7608",
-      "transformation": "copy"
+      "transformation": "post_export_public_companion_update"
     },
     {
       "path": "tools/check_repo_hygiene.py",
@@ -5354,7 +5360,29 @@
       "transformation": "copy"
     }
   ],
+  "git_submodules": {
+    "evaluations/review-history": {
+      "commit": "eb233aeb5b3dbc8d4b455620477dc8cb70543edb",
+      "url": "https://github.com/Kind-NK-Hill/review-history-evaluation.git"
+    }
+  },
   "normalization": "UTF-8 LF",
+  "public_amendments": [
+    {
+      "at_utc": "2026-09-06T07:20:37.045397+00:00",
+      "changed_file_sha256": {
+        ".gitmodules": "4f0cefc1925040b7fbee594084fd63e101e0abe69006cd11a6340201daf730df",
+        "README.md": "bc069cec42bf8daf121948abce294cc9560d9eddb2d55c77573b0321c8f59a9c",
+        "README.zh-CN.md": "813fb8d44a87c6d20b4d9937384a12c721b10e66798a17e4ab0d50908677398f",
+        "tests/test_public_release.py": "a218529224f577e240be50027a6343fdedc2d34cfc9265e5eb27f1a98c4a24a0",
+        "tools/check_public_release.py": "6642ac2440dd627dad3e09ef199135491ea919ede07cae7d38a656e32881b499"
+      },
+      "companion_commit": "eb233aeb5b3dbc8d4b455620477dc8cb70543edb",
+      "corpus_mapping_and_original_source_commit_unchanged": true,
+      "previous_manifest_sha256": "8711b80420d73bc537b548e861621f9c4e22aafbae9911b4091f63233b32ab1e",
+      "purpose": "Link the optional public evaluation repository and verify its exact URL and Git commit."
+    }
+  ],
   "schema": "formalization-engine.public-release.v1",
   "source_commit": "ebe367457ea7c5aa2db1f1fe89133c904b1c651d"
 }

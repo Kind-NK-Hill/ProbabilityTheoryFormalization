@@ -28,6 +28,54 @@ OWNER_WORKSPACE_PATH = re.compile(
 )
 EXAMPLE_USER_NAMES = {"user", "username", "your-user", "your_username", "example", "example-user", "$user", "${user}"}
 
+# Optional public companions are pinned Git links, not exported runtime files.
+# Keep this list exact: adding a submodule must not allow arbitrary local trees.
+PUBLIC_SUBMODULES = {
+    "evaluations/review-history": {
+        "name": "review-history-evaluation",
+        "url": "https://github.com/Kind-NK-Hill/review-history-evaluation.git",
+    }
+}
+
+
+def check_public_submodules(root: Path, declared: object) -> tuple[set[str], list[str]]:
+    if not isinstance(declared, dict):
+        return set(), ["publication git_submodules must be an object"]
+    if not declared:
+        return set(), []
+    allowed, errors, expected_config = set(), [], {}
+    for path, binding in declared.items():
+        policy = PUBLIC_SUBMODULES.get(path)
+        if policy is None or not isinstance(binding, dict):
+            errors.append(f"unapproved public submodule: {path}")
+            continue
+        allowed.add(path)
+        commit = binding.get("commit", "")
+        if binding.get("url") != policy["url"]:
+            errors.append(f"public submodule URL mismatch: {path}")
+        if not isinstance(commit, str) or not re.fullmatch(r"[0-9a-f]{40}", commit):
+            errors.append(f"public submodule commit must be a full Git object: {path}")
+        # Read the superproject index, so CI also works with uninitialized modules.
+        result = subprocess.run(
+            ["git", "-C", str(root), "ls-files", "--stage", "--", path],
+            capture_output=True, text=True,
+        )
+        expected_entry = f"160000 {commit} 0\t{path}"
+        if result.returncode or result.stdout.strip() != expected_entry:
+            errors.append(f"public submodule Git link mismatch: {path}")
+        prefix = f"submodule.{policy['name']}."
+        expected_config[prefix + "path"] = path
+        expected_config[prefix + "url"] = policy["url"]
+    config = subprocess.run(
+        ["git", "config", "--file", str(root / ".gitmodules"), "--list"],
+        capture_output=True, text=True,
+    )
+    lines = [line for line in config.stdout.splitlines() if line]
+    actual_config = dict(line.split("=", 1) for line in lines if "=" in line)
+    if config.returncode or actual_config != expected_config or len(lines) != len(expected_config):
+        errors.append("public .gitmodules configuration differs from approved companions")
+    return allowed, errors
+
 
 def machine_path_findings(relative_path: str, text: str) -> list[str]:
     """Check published prose/data, excluding code and deliberate test fixtures.
@@ -51,9 +99,11 @@ def machine_path_findings(relative_path: str, text: str) -> list[str]:
 
 
 def check(root: Path, paths: list[str]) -> list[str]:
-    errors = []
+    manifest = json.loads((root / "data/publication/release_manifest.json").read_text(encoding="utf-8"))
+    submodules, errors = check_public_submodules(root, manifest.get("git_submodules", {}))
+    companion_paths = submodules | ({".gitmodules"} if submodules else set())
     for path in paths:
-        if forbidden(path) or not (selected(path) or path in {
+        if forbidden(path) or not (selected(path) or path in companion_paths or path in {
             "data/publication/corpus_map.json", "data/publication/release_manifest.json"
         }):
             errors.append(f"private path: {path}")
@@ -63,7 +113,6 @@ def check(root: Path, paths: list[str]) -> list[str]:
         target = root / path
         if target.is_file() and target.suffix in PUBLIC_TEXT_SUFFIXES:
             errors.extend(machine_path_findings(path, target.read_text(encoding="utf-8")))
-    manifest = json.loads((root / "data/publication/release_manifest.json").read_text(encoding="utf-8"))
     if manifest.get("schema") != "formalization-engine.public-release.v1":
         errors.append("unsupported publication manifest schema")
     if not re.fullmatch(r"[0-9a-f]{40}", str(manifest.get("source_commit", ""))):
@@ -97,11 +146,11 @@ def check(root: Path, paths: list[str]) -> list[str]:
             errors.append("corpus and release authority declarations differ")
     else:
         errors.append("public corpus mapping is missing")
-    actual = set(paths) - {"data/publication/release_manifest.json"}
+    actual = set(paths) - {"data/publication/release_manifest.json"} - submodules
     if actual != set(expected):
         errors.append(f"manifest inventory differs: missing={sorted(set(expected)-actual)}, extra={sorted(actual-set(expected))}")
     for p, sha in expected.items():
-        if forbidden(p) or not (selected(p) or p == "data/publication/corpus_map.json"):
+        if forbidden(p) or not (selected(p) or p == "data/publication/corpus_map.json" or (p == ".gitmodules" and submodules)):
             errors.append(f"private manifest path: {p}")
             continue
         target = root / p
@@ -130,7 +179,7 @@ def main() -> int:
         print(f"[FAIL] {error}")
     if errors:
         return 1
-    print(f"[PASS] public release boundary and {len(paths)} file fingerprints; not semantic review authority")
+    print(f"[PASS] public release boundary and {len(paths)} tracked entries; not semantic review authority")
     return 0
 
 

@@ -32,6 +32,8 @@
 审查历史研究已完成历史记录重建与首轮修复轨迹描述。登记判断未经独立数学真值标注，
 当前结果不支持审查的因果收益或完整准确率评测。[进度与限制](docs/project_notes.md#paper-and-ongoing-evaluation)
 
+独立的[审核历史评估仓库](https://github.com/Kind-NK-Hill/review-history-evaluation)提供选定历史输入、分析脚本与保存的统计结果，报告的交付状态也在该仓库说明。本项目通过可选的 [`evaluations/review-history`](evaluations/review-history) Git 子模块关联它；运行形式化流程无需初始化该子模块。
+
 ## 两个代表案例
 
 ### 发现自动检查通过、但遗漏适用条件的代码
