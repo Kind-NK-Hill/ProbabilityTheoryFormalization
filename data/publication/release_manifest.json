@@ -5362,7 +5362,7 @@
   ],
   "git_submodules": {
     "evaluations/review-history": {
-      "commit": "eb233aeb5b3dbc8d4b455620477dc8cb70543edb",
+      "commit": "84248648b66a4df16889c82e01b94a098d060bf4",
       "url": "https://github.com/Kind-NK-Hill/review-history-evaluation.git"
     }
   },
@@ -5380,6 +5380,14 @@
       "companion_commit": "eb233aeb5b3dbc8d4b455620477dc8cb70543edb",
       "corpus_mapping_and_original_source_commit_unchanged": true,
       "previous_manifest_sha256": "8711b80420d73bc537b548e861621f9c4e22aafbae9911b4091f63233b32ab1e",
+      "purpose": "Link the optional public evaluation repository and verify its exact URL and Git commit."
+    },
+    {
+      "at_utc": "2026-09-06T08:03:00.094058+00:00",
+      "changed_file_sha256": {},
+      "companion_commit": "84248648b66a4df16889c82e01b94a098d060bf4",
+      "corpus_mapping_and_original_source_commit_unchanged": true,
+      "previous_manifest_sha256": "6041a79209b544cf4a0b8d99c7d8c4e0760bd3b881f668d34c29f214d7809149",
       "purpose": "Link the optional public evaluation repository and verify its exact URL and Git commit."
     }
   ],
