@@ -1,24 +1,24 @@
 # ProbabilityTheoryFormalization
 
-**AI Agent 工作流与验证**
+**智能体工作流与验证**
 
 以概率论教材为场景，研究和开发 AI 辅助代码生成、自动检查、独立审查与迭代修复流程。目标是让生成的 Lean 代码符合原文含义，并能被其他模块正确调用，同时保留可追溯的失败和修复记录。
 
-**个人角色**：Shuo Deng，负责工作流与形式化开发，使用 AI 辅助；下方预印本第一作者。
+**个人角色**：Shuo Deng，提出要求、协调智能体执行、操作和审阅人工智能辅助工作流；下方预印本第一作者。
 
-**技术栈**：Python、Lean 4、SQLite、自动化验证。
+**系统使用的技术**：Python、Lean 4、SQLite、自动化验证。
 
-[English](README.md) · [论文](https://arxiv.org/abs/2607.27298) · [运行完整流程](docs/workflow_demo.md) · [两个代表案例](#两个代表案例) · [已合并的协作贡献](https://github.com/wkshum/ProbabilityTheory/pull/8) · [联系邮箱](mailto:kdsdengshuo2823@gmail.com)
+[English](README.md) · [论文](https://arxiv.org/abs/2607.27298) · [智能体评价研究](https://github.com/Kind-NK-Hill/review-history-evaluation) · [运行完整流程](docs/workflow_demo.md) · [两个代表案例](#两个代表案例) · [已合并的协作贡献](https://github.com/wkshum/ProbabilityTheory/pull/8) · [联系邮箱](mailto:kdsdengshuo2823@gmail.com)
 
 ## 我的职责与贡献
 
-我是 **Shuo Deng**，负责这套工作流的开发，并参与教材形式化。具体工作包括：
+我是 **Shuo Deng**，参与这套工作流和教材形式化，使用人工智能协助。具体工作包括：
 
-- **流程设计与实现**：将教材内容组织成任务，串联代码生成、检查和迭代修复，支持中断后的恢复。[流程与架构](docs/phase2/workflow.md)
-- **验证与状态管理**：将审查结论绑定到实际检查的代码及依赖版本，保留构建和修复记录，使用 SQLite 管理状态，防止旧审查批准已经变化的代码。[状态与证据管理](docs/workspace_state.md)
+- **要求与执行协调**：明确任务要求，协调代码生成、构建和审查，检查失败并提出修正要求。[流程与架构](docs/phase2/workflow.md)
+- **流程操作与审阅**：操作和检查审查绑定、修复记录及过期判断拒绝机制，核对审查是否对应实际代码及依赖版本；SQLite 属于系统实现所用技术。[状态与证据管理](docs/workspace_state.md)
 - **失败分析与研究**：分析遗漏条件、定理接口变化和下游调用问题，提交经过审查的修复，并共同撰写概率论形式化预印本。[完整案例](examples/case-studies/) · [已合并修复](https://github.com/wkshum/ProbabilityTheory/pull/7)
 
-**合作分工与 AI 辅助**：Kenneth W. Shum 是教材作者、论文合作者，并维护[协作教材仓库](https://github.com/wkshum/ProbabilityTheory)。我的工作侧重流程和形式化开发；教材原文的修正与教材作者讨论。AI 工具用于代码生成、证明搜索、修复、审查和文档辅助；这些产物不等于全部由本人手写，数学含义的判断仍需要人工参与。
+**合作分工与 AI 辅助**：Kenneth W. Shum 是教材作者、论文合作者，并维护[协作教材仓库](https://github.com/wkshum/ProbabilityTheory)。我的工作侧重要求、执行协调和结果审阅；教材原文的修正与教材作者讨论。AI 工具用于代码生成、证明搜索、修复、审查和文档辅助；这些产物不等于全部由本人手写，数学含义的判断仍需要人工参与。
 
 ## 可查看的成果
 
@@ -27,12 +27,12 @@
 | **第一作者预印本** | [*From Lecture Notes to Lean: Formalizing a Textbook on Probability Theory*](https://arxiv.org/abs/2607.27298)，作者：**Shuo Deng**、Kenneth W. Shum。**状态**：arXiv 预印本，2026 年 7 月。 |
 | **可运行的完整流程** | [正式接口演示](docs/workflow_demo.md)：真实 Lean 编译、隔离数据库、调用方修复和旧审查拒绝。默认使用已登记的教学审查。 |
 | **公开系统与案例** | [工作流实现](src/formalization_engine/)与[八个精选案例](examples/case-studies/)，包含代码对照和审查时间线。 |
+| **智能体评价研究** | [《概率证明如何完成》](https://github.com/Kind-NK-Hill/review-history-evaluation)：十一组任务、三种配置、两批共66次主运行，分析完成判断、历史证明组合和证明交接。技术报告第30版／公开 v0.7.0。 |
 | **已合并的协作贡献** | [第二章：对齐假设与接口](https://github.com/wkshum/ProbabilityTheory/pull/7)、[第三章：重构测度扩张](https://github.com/wkshum/ProbabilityTheory/pull/8)，均已合并至 Kenneth 的仓库。 |
 
-审查历史研究已完成历史记录重建与首轮修复轨迹描述。登记判断未经独立数学真值标注，
-当前结果不支持审查的因果收益或完整准确率评测。[进度与限制](docs/project_notes.md#paper-and-ongoing-evaluation)
+评价研究现已涵盖实际数学交付、同题耗时比较、历史证明组合，以及协作者的成果是否到达使用者。H1、L6、M2 案例分别检查缺失工作、任务范围歧义和交付失败。不同配置同时改变多个因素，结果不能单独归因为审查机制的收益，也未对全部判断提供独立人工认证。[当前报告与证据](https://github.com/Kind-NK-Hill/review-history-evaluation/tree/main/report-v30) · [研究历史与限制](docs/project_notes.md#paper-and-ongoing-evaluation)
 
-独立的[审核历史评估仓库](https://github.com/Kind-NK-Hill/review-history-evaluation)提供选定历史输入、分析脚本与保存的统计结果，报告的交付状态也在该仓库说明。本项目通过可选的 [`evaluations/review-history`](evaluations/review-history) Git 子模块关联它；运行形式化流程无需初始化该子模块。
+独立的[评价研究仓库](https://github.com/Kind-NK-Hill/review-history-evaluation)提供论文、选定证据、分析脚本和保存结果。本项目通过可选的 [`evaluations/review-history`](evaluations/review-history) Git 子模块关联它；运行形式化流程无需初始化该子模块。子模块固定在较早快照，最新研究请使用前面的仓库入口。
 
 ## 两个代表案例
 
