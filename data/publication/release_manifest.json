@@ -3669,15 +3669,15 @@
     },
     {
       "path": "README.md",
-      "sha256": "bc069cec42bf8daf121948abce294cc9560d9eddb2d55c77573b0321c8f59a9c",
+      "sha256": "c4a6bf33aa782de4987341bdee9a183646d9b02e85bac19535d64b8451cde7b6",
       "source_sha256": "f719f5089e44e3b0e0be45f9e2295ba5ac3c5f0af8b2e0d7f3667732bb787801",
-      "transformation": "post_export_public_companion_update"
+      "transformation": "post_export_public_documentation_update"
     },
     {
       "path": "README.zh-CN.md",
-      "sha256": "813fb8d44a87c6d20b4d9937384a12c721b10e66798a17e4ab0d50908677398f",
+      "sha256": "2bb5208b50ecdd1e7812eddc22a3d2c5b57a51a12707422507124656ba42bca9",
       "source_sha256": "143cc4775e5a80992a4d5ee1d437e1d54e5477749e31e3660f3faa0928d1991d",
-      "transformation": "post_export_public_companion_update"
+      "transformation": "post_export_public_documentation_update"
     },
     {
       "path": "SECURITY.md",
@@ -3813,9 +3813,9 @@
     },
     {
       "path": "docs/project_notes.md",
-      "sha256": "917524fd70c629c4153abc152c4f8eeba0f9992e107794582c4804e2a2138961",
+      "sha256": "79c0323b95f9a8d2e76a61fa2a927c7b349c7b56095093fc5b6acd42fedd2d5c",
       "source_sha256": "917524fd70c629c4153abc152c4f8eeba0f9992e107794582c4804e2a2138961",
-      "transformation": "copy"
+      "transformation": "post_export_public_documentation_update"
     },
     {
       "path": "docs/repository_scope.md",
@@ -5389,6 +5389,15 @@
       "corpus_mapping_and_original_source_commit_unchanged": true,
       "previous_manifest_sha256": "6041a79209b544cf4a0b8d99c7d8c4e0760bd3b881f668d34c29f214d7809149",
       "purpose": "Link the optional public evaluation repository and verify its exact URL and Git commit."
+    },
+    {
+      "date": "2026-09-15",
+      "description": "Update bilingual project entry and research status to revision 30; clarify AI-assisted contribution scope. Runtime, corpus and source provenance unchanged.",
+      "files": [
+        "README.md",
+        "README.zh-CN.md",
+        "docs/project_notes.md"
+      ]
     }
   ],
   "schema": "formalization-engine.public-release.v1",
