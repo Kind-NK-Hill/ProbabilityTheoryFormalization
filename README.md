@@ -9,27 +9,27 @@ on it.
 
 **中文概述**：以概率论教材为场景，研究和开发 AI 辅助代码生成、自动检查、独立审查与迭代修复流程，保留可追溯的失败和修复记录。[阅读中文版](README.zh-CN.md)
 
-**Shuo Deng:** workflow engineering and formalization, with AI assistance; first
-author of the linked preprint. **Stack:** Python · Lean 4 · SQLite · automated verification.
+**Shuo Deng:** requirements, agent coordination, operation and review of the
+AI-assisted workflow; first author of the linked preprint.
+**System technologies:** Python · Lean 4 · SQLite · automated verification.
 
 [Paper](https://arxiv.org/abs/2607.27298) ·
 [Run the complete workflow](docs/workflow_demo.md) ·
-[Review-history evaluation](https://github.com/Kind-NK-Hill/review-history-evaluation) ·
+[Agent evaluation study](https://github.com/Kind-NK-Hill/review-history-evaluation) ·
 [Two representative cases](#two-representative-cases) ·
 [Merged collaboration](https://github.com/wkshum/ProbabilityTheory/pull/8) ·
 [Contact](mailto:kdsdengshuo2823@gmail.com)
 
 ## My role and contributions
 
-I am **Shuo Deng**, the developer of this workflow and a contributor to the
-textbook formalization. My work covers:
+I am **Shuo Deng**, a contributor to this workflow and the textbook
+formalization. My work, with AI assistance, covers:
 
-- **Workflow design and implementation:** organize textbook passages into tasks,
-  coordinate code generation and checks, and support iterative repair and
-  recovery from interrupted work. [Workflow and architecture](docs/phase2/workflow.md)
-- **Verification and state management:** bind reviews to the code and
-  dependencies actually checked; retain build and repair records; use SQLite
-  to track state and prevent outdated reviews from approving changed code.
+- **Requirements and agent coordination:** direct task requirements, coordinate
+  code generation, builds and review, inspect failures, and request corrections. [Workflow and architecture](docs/phase2/workflow.md)
+- **Workflow operation and review:** operate and inspect the mechanisms that
+  bind reviews to checked code and dependencies, retain repair records and
+  reject outdated approvals. SQLite is part of the system implementation.
   [State and evidence model](docs/workspace_state.md)
 - **Failure analysis and research:** investigate missing assumptions, changed
   theorem interfaces, and broken downstream use; contribute reviewed fixes
@@ -38,7 +38,7 @@ textbook formalization. My work covers:
 
 **Collaboration and AI assistance.** Kenneth W. Shum is the textbook author and
 paper coauthor, and maintains the [collaborating textbook repository](https://github.com/wkshum/ProbabilityTheory).
-My role centers on the workflow and formalization development; source corrections
+My role centers on requirements, execution coordination and result review; source corrections
 are discussed with the textbook author. AI tools assist with code generation,
 proof search, repairs, review, and documentation. These artifacts are not a claim
 of wholly handwritten work; mathematical interpretation still requires human judgment.
@@ -50,18 +50,24 @@ of wholly handwritten work; mathematical interpretation still requires human jud
 | **First-author preprint** | [*From Lecture Notes to Lean: Formalizing a Textbook on Probability Theory*](https://arxiv.org/abs/2607.27298) — **Shuo Deng**, Kenneth W. Shum. **arXiv preprint**, July 2026. |
 | **Runnable workflow** | [Complete production-API demonstration](docs/workflow_demo.md): real Lean builds, isolated SQLite state, caller repair and stale-review rejection. Default opinions are recorded teaching reviews. |
 | **Public system and cases** | [Workflow implementation](src/formalization_engine/) and [eight selected cases](examples/case-studies/), with code comparisons and review timelines. |
+| **Agent evaluation study** | [*How probability proofs are completed*](https://github.com/Kind-NK-Hill/review-history-evaluation): 66 primary runs across 11 task groups, three configurations and two batches, with completion reassessment and proof-handoff analysis. Technical report, revision 30 / public v0.7.0. |
 | **Merged collaboration** | [Chapter 2: align assumptions and interfaces](https://github.com/wkshum/ProbabilityTheory/pull/7) and [Chapter 3: refactor measure extension](https://github.com/wkshum/ProbabilityTheory/pull/8), both merged into Kenneth's repository. |
 
-Review-history research has reconstructed the historical records and completed a
-first round of descriptive repair-trajectory analysis. Recorded judgments are not
-independently established mathematical truth, and no causal review benefit or
-completed accuracy benchmark is claimed. [Progress and limits](docs/project_notes.md#paper-and-ongoing-evaluation)
+The evaluation study now examines delivered mathematics, matched-task time
+comparisons, historical proof composition and whether collaborators' results
+reached their intended recipients. Its H1, L6 and M2 cases distinguish missing
+work, ambiguous task scope and failed delivery. The configurations bundle
+several differences; these observations do not isolate a causal review benefit
+or provide independent human validation of every judgment.
+[Current report and evidence](https://github.com/Kind-NK-Hill/review-history-evaluation/tree/main/report-v30)
+· [Research history and limits](docs/project_notes.md#paper-and-ongoing-evaluation)
 
 The [evaluation repository](https://github.com/Kind-NK-Hill/review-history-evaluation)
-contains the selected historical inputs, analysis scripts, and saved statistical
-results. Its report status is listed there. It is linked here as the optional
+contains the report, selected evidence, analysis scripts and saved results.
+It is linked here as the optional
 [`evaluations/review-history`](evaluations/review-history) Git submodule; running
-the formalization workflow does not require initializing it.
+the formalization workflow does not require initializing it. The pinned submodule
+is an earlier snapshot; use the repository link above for the latest study.
 
 ## Two representative cases
 

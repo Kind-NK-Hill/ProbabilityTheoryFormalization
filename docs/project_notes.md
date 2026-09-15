@@ -6,8 +6,8 @@
 agent workflows and verification using textbook probability formalization.
 Older identifiers retain the historical project name.
 
-Shuo Deng develops the workflow and contributes to the formalization with AI
-assistance. Kenneth W. Shum is the source textbook author, a coauthor of the
+Shuo Deng directs requirements, coordinates AI-assisted execution, and operates
+and reviews the workflow and formalization results. Kenneth W. Shum is the source textbook author, a coauthor of the
 preprint, and maintainer of the collaborating textbook repository.
 
 Public provenance:
@@ -31,8 +31,18 @@ review was performed by a human.
 is an **arXiv preprint**, submitted on 29 July 2026, by Shuo Deng and Kenneth W.
 Shum. Its scope is the textbook formalization and its interfaces with Mathlib.
 
-The subsequent review-history study has reconstructed historical records and
-completed a first round of descriptive candidate-repair analysis. The fixed
+**Current study (15 September 2026):** [*How probability proofs are completed*](https://github.com/Kind-NK-Hill/review-history-evaluation)
+is a separate technical report by Shuo Deng and Kenneth W. Shum, now at report
+revision 30 / public v0.7.0. It examines 66 primary runs (11 task groups, three
+configurations, two batches), completion judgments, elapsed time, historical
+proof composition and proof handoffs. The H1 caller changes the interpretation
+of missing work; L6 exposes task-scope ambiguity; M2 separates a completed proof
+from its delivery and subsequent use. Selected evidence and arithmetic
+reproduction are public. The study does not establish independent human ground
+truth for all judgments or isolate a causal benefit of a single mechanism.
+
+**Earlier historical analysis:** the review-history study first reconstructed
+historical records and described candidate repair. The fixed
 analysis population contains 3,231 distinct review-evidence signatures, not
 independent executions. Later stages distinguish candidate repair from official
 re-review, external review and duplicate representations of the same review.
@@ -44,10 +54,10 @@ effect of attempt count. Same-condition independent repeat reviews are absent
 from this historical sample. Automated finding alignment has not become an
 independently adjudicated resolution label.
 
-These are interim descriptions of retained private research data. They are not
+Those early results describe retained historical research data. They are not
 independent mathematical truth labels, reviewer accuracy, a repair success rate,
-or causal evidence that the review process improves outcomes. The source data
-and full analysis release are not bundled into this public runtime release.
+or causal evidence that the review process improves outcomes. The study is maintained in the separate evaluation repository; this runtime
+repository is the engineering entry point.
 
 Three separately inspectable additions support engineering and future evaluation:
 
