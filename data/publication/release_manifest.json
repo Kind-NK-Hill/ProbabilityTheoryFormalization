@@ -3669,13 +3669,13 @@
     },
     {
       "path": "README.md",
-      "sha256": "c4a6bf33aa782de4987341bdee9a183646d9b02e85bac19535d64b8451cde7b6",
+      "sha256": "b8607a8a5175d26eebbfa8d65ba764a0359781d724cc8789cbfcf2518b52d30f",
       "source_sha256": "f719f5089e44e3b0e0be45f9e2295ba5ac3c5f0af8b2e0d7f3667732bb787801",
       "transformation": "post_export_public_documentation_update"
     },
     {
       "path": "README.zh-CN.md",
-      "sha256": "2bb5208b50ecdd1e7812eddc22a3d2c5b57a51a12707422507124656ba42bca9",
+      "sha256": "5a20f4905dd29618c340b10ea6b00f9c7722f3401e8d79c97fd42c6f9b92341d",
       "source_sha256": "143cc4775e5a80992a4d5ee1d437e1d54e5477749e31e3660f3faa0928d1991d",
       "transformation": "post_export_public_documentation_update"
     },
