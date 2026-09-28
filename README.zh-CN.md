@@ -4,21 +4,21 @@
 
 以概率论教材为场景，研究和开发 AI 辅助代码生成、自动检查、独立审查与迭代修复流程。目标是让生成的 Lean 代码符合原文含义，并能被其他模块正确调用，同时保留可追溯的失败和修复记录。
 
-**个人角色**：Shuo Deng，提出要求、协调智能体执行、操作和审阅人工智能辅助工作流；下方预印本第一作者。
+**项目发起人**：Shuo Deng，负责工作流开发、教材形式化与评测研究；下方预印本第一作者。
 
-**系统使用的技术**：Python、Lean 4、SQLite、自动化验证。
+**技术栈**：Python、Lean 4、SQLite、自动化验证。
 
 [English](README.md) · [论文](https://arxiv.org/abs/2607.27298) · [智能体评价研究](https://github.com/Kind-NK-Hill/review-history-evaluation) · [运行完整流程](docs/workflow_demo.md) · [两个代表案例](#两个代表案例) · [已合并的协作贡献](https://github.com/wkshum/ProbabilityTheory/pull/8) · [联系邮箱](mailto:kdsdengshuo2823@gmail.com)
 
 ## 我的职责与贡献
 
-我是 **Shuo Deng**，参与这套工作流和教材形式化，使用人工智能协助。具体工作包括：
+我是 **Shuo Deng**，本项目的发起人，与教材作者 Kenneth W. Shum 合作开展形式化工作流开发与评测研究。
 
-- **要求与执行协调**：明确任务要求，协调代码生成、构建和审查，检查失败并提出修正要求。[流程与架构](docs/phase2/workflow.md)
-- **流程操作与审阅**：操作和检查审查绑定、修复记录及过期判断拒绝机制，核对审查是否对应实际代码及依赖版本；SQLite 属于系统实现所用技术。[状态与证据管理](docs/workspace_state.md)
-- **失败分析与研究**：分析遗漏条件、定理接口变化和下游调用问题，提交经过审查的修复，并共同撰写概率论形式化预印本。[完整案例](examples/case-studies/) · [已合并修复](https://github.com/wkshum/ProbabilityTheory/pull/7)
+- **工作流开发**：搭建教材形式化的任务组织、代码生成、自动检查、独立审查与反馈修复流程。[流程与架构](docs/phase2/workflow.md)
+- **验证与状态管理**：将审查结论绑定到实际代码和依赖版本，保留修复记录，拒绝使用过期判断批准新交付。[状态与证据管理](docs/workspace_state.md)
+- **失败分析与研究**：分析遗漏条件、定理接口变化和下游调用问题，完成经过审查的修订，并共同撰写概率论形式化预印本。[完整案例](examples/case-studies/) · [已合并修订](https://github.com/wkshum/ProbabilityTheory/pull/7)
 
-**合作分工与 AI 辅助**：Kenneth W. Shum 是教材作者、论文合作者，并维护[协作教材仓库](https://github.com/wkshum/ProbabilityTheory)。我的工作侧重要求、执行协调和结果审阅；教材原文的修正与教材作者讨论。AI 工具用于代码生成、证明搜索、修复、审查和文档辅助；这些产物不等于全部由本人手写，数学含义的判断仍需要人工参与。
+**合作与工具**：Kenneth W. Shum 是教材作者、论文合作者，并维护[协作教材仓库](https://github.com/wkshum/ProbabilityTheory)。项目开发使用人工智能工具辅助编码、证明搜索、分析和写作。
 
 ## 可查看的成果
 
@@ -79,3 +79,4 @@
 项目旧名为 **ToyApollo**，历史证据与格式标识保留旧名。当前命令为 `formalize`，
 程序位于 `src/formalization_engine/`，正文位于 `ProbabilityTheory/`。
 简历和引用请统一使用 **ProbabilityTheoryFormalization**。
+
