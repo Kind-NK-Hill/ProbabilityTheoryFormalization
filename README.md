@@ -9,9 +9,9 @@ on it.
 
 **中文概述**：以概率论教材为场景，研究和开发 AI 辅助代码生成、自动检查、独立审查与迭代修复流程，保留可追溯的失败和修复记录。[阅读中文版](README.zh-CN.md)
 
-**Shuo Deng:** requirements, agent coordination, operation and review of the
-AI-assisted workflow; first author of the linked preprint.
-**System technologies:** Python · Lean 4 · SQLite · automated verification.
+**Shuo Deng:** project creator, responsible for workflow development,
+formalization and the evaluation study; first author of the linked preprint.
+**Technology stack:** Python · Lean 4 · SQLite · automated verification.
 
 [Paper](https://arxiv.org/abs/2607.27298) ·
 [Run the complete workflow](docs/workflow_demo.md) ·
@@ -22,26 +22,24 @@ AI-assisted workflow; first author of the linked preprint.
 
 ## My role and contributions
 
-I am **Shuo Deng**, a contributor to this workflow and the textbook
-formalization. My work, with AI assistance, covers:
+I am **Shuo Deng**, the creator of this project. I develop the formalization
+workflow and its evaluation study in collaboration with textbook author
+Kenneth W. Shum.
 
-- **Requirements and agent coordination:** direct task requirements, coordinate
-  code generation, builds and review, inspect failures, and request corrections. [Workflow and architecture](docs/phase2/workflow.md)
-- **Workflow operation and review:** operate and inspect the mechanisms that
-  bind reviews to checked code and dependencies, retain repair records and
-  reject outdated approvals. SQLite is part of the system implementation.
+- **Workflow development:** build the task, generation, checking, review and
+  repair workflow for textbook formalization.
+  [Workflow and architecture](docs/phase2/workflow.md)
+- **Verification and state management:** bind reviews to checked code and
+  dependencies, retain repair records and reject outdated approvals.
   [State and evidence model](docs/workspace_state.md)
 - **Failure analysis and research:** investigate missing assumptions, changed
-  theorem interfaces, and broken downstream use; contribute reviewed fixes
-  and coauthor the probability-formalization preprint.
+  theorem interfaces and broken downstream use; deliver reviewed fixes and
+  coauthor the probability-formalization preprint.
   [Cases](examples/case-studies/) · [Merged fixes](https://github.com/wkshum/ProbabilityTheory/pull/7)
 
-**Collaboration and AI assistance.** Kenneth W. Shum is the textbook author and
-paper coauthor, and maintains the [collaborating textbook repository](https://github.com/wkshum/ProbabilityTheory).
-My role centers on requirements, execution coordination and result review; source corrections
-are discussed with the textbook author. AI tools assist with code generation,
-proof search, repairs, review, and documentation. These artifacts are not a claim
-of wholly handwritten work; mathematical interpretation still requires human judgment.
+**Collaboration and tools.** Kenneth W. Shum is the textbook author and paper
+coauthor, and maintains the [collaborating textbook repository](https://github.com/wkshum/ProbabilityTheory).
+Development uses AI tools for coding, proof search, analysis and writing.
 
 ## Outputs you can inspect
 
@@ -124,3 +122,4 @@ The project was formerly called **ToyApollo**; historical schemas and case evide
 retain that name. The active command is `formalize`, the package is
 `src/formalization_engine/`, and the corpus is `ProbabilityTheory/`. Use **ProbabilityTheoryFormalization** when citing
 the project.
+
