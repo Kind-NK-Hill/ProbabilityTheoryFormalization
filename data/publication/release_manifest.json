@@ -3669,13 +3669,13 @@
     },
     {
       "path": "README.md",
-      "sha256": "b8607a8a5175d26eebbfa8d65ba764a0359781d724cc8789cbfcf2518b52d30f",
+      "sha256": "efa7cc758aba11c6e363113fbc200fa55ae9ba47599b1e4c91f99e93a5049d14",
       "source_sha256": "f719f5089e44e3b0e0be45f9e2295ba5ac3c5f0af8b2e0d7f3667732bb787801",
       "transformation": "post_export_public_documentation_update"
     },
     {
       "path": "README.zh-CN.md",
-      "sha256": "5a20f4905dd29618c340b10ea6b00f9c7722f3401e8d79c97fd42c6f9b92341d",
+      "sha256": "617ee7853e91a6fa7835e8eada5cc36a822cc179763ea1e95f7fc595a7d91845",
       "source_sha256": "143cc4775e5a80992a4d5ee1d437e1d54e5477749e31e3660f3faa0928d1991d",
       "transformation": "post_export_public_documentation_update"
     },
@@ -3813,9 +3813,21 @@
     },
     {
       "path": "docs/project_notes.md",
-      "sha256": "79c0323b95f9a8d2e76a61fa2a927c7b349c7b56095093fc5b6acd42fedd2d5c",
+      "sha256": "3c8d0e7f96ae15d8501b5d9a7ebab147d16c724f509f054e741af7eded81b972",
       "source_sha256": "917524fd70c629c4153abc152c4f8eeba0f9992e107794582c4804e2a2138961",
       "transformation": "post_export_public_documentation_update"
+    },
+    {
+      "path": "docs/project_overview.md",
+      "sha256": "a441510ba20e71d35d1eba3152bebafa96369c9b9fcd2e53591482c39d7cf4a2",
+      "source_sha256": null,
+      "transformation": "post_export_public_documentation_addition"
+    },
+    {
+      "path": "docs/project_overview.zh-CN.md",
+      "sha256": "a87b477e208842894e8e8702c855c365798b696fdb12a72a22af8a4735b2c6e6",
+      "source_sha256": null,
+      "transformation": "post_export_public_documentation_addition"
     },
     {
       "path": "docs/repository_scope.md",
@@ -5401,5 +5413,18 @@
     }
   ],
   "schema": "formalization-engine.public-release.v1",
-  "source_commit": "ebe367457ea7c5aa2db1f1fe89133c904b1c651d"
+  "source_commit": "ebe367457ea7c5aa2db1f1fe89133c904b1c651d",
+  "documentation_updates": [
+    {
+      "date": "2026-11-10",
+      "files": [
+        "README.md",
+        "README.zh-CN.md",
+        "docs/project_notes.md",
+        "docs/project_overview.md",
+        "docs/project_overview.zh-CN.md"
+      ],
+      "scope": "Project presentation only: Fable-authored text checked against public contracts and author-provided project dates. Runtime, corpus and review authority unchanged."
+    }
+  ]
 }
