@@ -25,13 +25,15 @@ These sources establish roles, collaboration, and inspectable outputs. Git
 authorship does not establish that every line was handwritten or that every
 review was performed by a human.
 
-## Paper and ongoing evaluation
+<a id="paper-and-ongoing-evaluation"></a>
+
+## Paper and later independent studies
 
 [*From Lecture Notes to Lean: Formalizing a Textbook on Probability Theory*](https://arxiv.org/abs/2607.27298)
 is an **arXiv preprint**, submitted on 29 July 2026, by Shuo Deng and Kenneth W.
 Shum. Its scope is the textbook formalization and its interfaces with Mathlib.
 
-**Current study (15 September 2026):** [*How probability proofs are completed*](https://github.com/Kind-NK-Hill/review-history-evaluation)
+**Later independent study (15 September 2026):** [*How probability proofs are completed*](https://github.com/Kind-NK-Hill/review-history-evaluation)
 is a separate technical report by Shuo Deng and Kenneth W. Shum, now at report
 revision 30 / public v0.7.0. It examines 66 primary runs (11 task groups, three
 configurations, two batches), completion judgments, elapsed time, historical
@@ -40,6 +42,14 @@ of missing work; L6 exposes task-scope ambiguity; M2 separates a completed proof
 from its delivery and subsequent use. Selected evidence and arithmetic
 reproduction are public. The study does not establish independent human ground
 truth for all judgments or isolate a causal benefit of a single mechanism.
+
+**Semantic reviewer evaluation (November 2026):** the separate
+[semantic-reviewer-evaluation](https://github.com/Kind-NK-Hill/semantic-reviewer-evaluation)
+study uses 858 external statement pairs to test adapted reviewer prompts,
+repeated judgments and second opinions. It tests one component rather than
+replaying the full engine. These two evaluations share the engineering
+background but have their own research questions, data and conclusions.
+See the concise [project overview](project_overview.md).
 
 **Earlier historical analysis:** the review-history study first reconstructed
 historical records and described candidate repair. The fixed
